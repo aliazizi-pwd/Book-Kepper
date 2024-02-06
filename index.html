@@ -6,21 +6,73 @@
     <title>Book Manager</title>
     <link rel="image icon" href="./public/image/icon-title-0-1.jpg">
     <link rel="stylesheet" href="./Library/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./source/css/style.css">
 </head>
-<body>
+<body class="d-flex justify-content-center align-items-start">
     <div class="container">
-        <div class="d-flex flex-column justify-content-start align-items-start">
+        <div class="d-flex flex-row justify-content-between align-items-center mt-5 mb-2">
+            <h2 class="text-start text-capitalize fs-4 fw-medium">Book Manager</h2>
+            <span class="text-end text-capitalize fs-5 fw-medium">Laps : <span class="count-book text-danger">0</span></span>  
+        </div>
+        <div class="app-window">
             <div class="row">
-                <div class="col-12 col-md-6 book-added">
-                    
+                <div class="col-12 col-md-6 col-lg-6 col-xl-4 book-added mb-5 mb-sm-0">
+                    <form class="form-control">
+                        <label for="input-id" class="form-label pt-1 pb-1">Book ID</label>
+                        <input type="text" id="input-id" placeholder="Please Enter Book ID" class="form-control text-start" >
+                        <label for="input-title" class="form-label pb-1 pt-1">Title</label>
+                        <input type="text" id="input-title" placeholder="Please Enter Title Book" class="form-control text-start">
+                        <label for="input-title" class="form-label pb-1 pt-1">Author</label>
+                        <input type="text" id="input-title" placeholder="Please Enter Author" class="form-control text-start">
+                        <label for="input-title" class="form-label pb-1 pt-1">Year</label>
+                        <input type="text" id="input-title" placeholder="Please Enter Year Book" class="form-control text-start">
+                        <label for="input-title" class="form-label pb-1 pt-1">Genre</label>
+                        <input type="text" id="input-title" placeholder="Please Enter Genre Book" class="form-control text-start">
+                    </form>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 col-xl-8 book-table">
+                    <table class="table table-bordered table-hover table-responsive table-striped overflow-x-auto">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="table-dark table-active text-center">ID</th>
+                                <th scope="col" class="table-dark table-active">Title</th>
+                                <th scope="col" class="table-dark table-active">Author</th>
+                                <th scope="col" class="table-dark table-active">Year</th>
+                                <th scope="col" class="table-dark table-active">Genre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="text-center">1</th>
+                                <th>Eloquent</th>
+                                <th>Marjin Haversine</th>
+                                <th>2022</th>
+                                <th>Scientific and educational</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container app-window">
+                    <div class="col-12 mt-4 bg-body-tertiary border rounded p-2">
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                            <div class="d-flex flex-row justify-content-start align-items-center">
+                                <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                                <button class="btn btn-danger ms-1"><i class="fa fa-eraser"></i></button>
+                                <button class="btn btn-dark ms-1"><i class="fa fa-moon"></i></button>
+                            </div> 
+                            <select name="filter" class="form-select-sm bg-warning text-dark border-0 rounded-0" style="outline: none;">
+                                <option value="All">All</option>
+                                <option value="Complete">Complete</option>
+                                <option value="unComplete">unComplete</option>
+                                <option value="Genre">Genre</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    
-    
     <script src="./Library/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./source/javaScript/app.js"></script>
