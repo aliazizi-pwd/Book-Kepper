@@ -13,6 +13,7 @@ const messageTitle = $.querySelector(".message-title");
 const messageAuthor = $.querySelector(".message-author");
 const messageYear = $.querySelector(".message-year");
 const messageGenre = $.querySelector(".message-genre");
+const messageDataBase = $.querySelector(".message-dataBase");
 // dataBase Book management 
 const dataBaseBook = $.querySelector(".dataBase-Book");
 // button event listeners
@@ -57,8 +58,10 @@ function checkInputHandler (e) {
         // send or push data to array main data base book :)
         bookList.push(newDataBook);
         
-        // dave data book to local storage browser user :)
+        // Save data book to local storage browser user :)
         saveDataBookLocalStorage(bookList);
+        // Create new a book 
+        createBookHandler();
     }
 }
 
@@ -67,6 +70,51 @@ function checkInputHandler (e) {
 // function save data book to local storage :)
 function saveDataBookLocalStorage (bookList) {
     localStorage.setItem("Books" , JSON.stringify(bookList));
+}
+
+
+// function create a new book and append book to list :)
+function createBookHandler () {
+    let receiveDataBook = JSON.parse(localStorage.getItem("Books"));
+    let boxMain , contentId , contentTitle , contentAuthor , contentYear , contentGenre , contentActions;
+    let btnComplete , btnTrash;
+    bookList = receiveDataBook;
+
+    bookList.forEach(function (book) {
+        boxMain = $.createElement("tr");
+
+        contentId = $.createElement("td");
+        contentId.innerHTML = book.id;
+        contentId.className = "text-center table-active";
+
+        contentTitle = $.createElement("td");
+        contentTitle.innerHTML = book.title;
+
+        contentAuthor = $.createElement("td");
+        contentAuthor.innerHTML = book.author;
+
+        contentYear = $.createElement("td");
+        contentYear.innerHTML = book.year;
+
+        contentGenre = $.createElement("td");
+        contentGenre.innerHTML = book.genre;
+
+        contentActions = $.createElement("td");
+        contentActions.classList.add("text-center");
+
+        btnComplete = $.createElement("button");
+        btnComplete.innerHTML = `<i class="fa fa-check"></i>`;
+        btnComplete.className = "btn btn-sm btn-success ms-1";
+
+        btnTrash = $.createElement("button");
+        btnTrash.innerHTML = `<i class="fa fa-trash"></i>`;
+        btnTrash.className = "btn btn-sm btn-danger ms-1";
+
+
+        contentActions.append(btnComplete,btnTrash);
+        boxMain.append(contentId,contentTitle,contentAuthor,contentYear,contentGenre,contentActions);
+        dataBaseBook.appendChild(boxMain);
+    });
 }
 
 

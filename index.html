@@ -32,8 +32,8 @@
                         <input type="text" id="input-title" placeholder="Please Enter Genre Book" class="input-genre form-control text-start">
                     </form>
                 </div>
-                <div class="col-12 col-lg-6 col-xl-8 book-table">
-                    <table class="dataBase-Book table table-bordered table-hover table-responsive table-striped overflow-x-auto">
+                <div class="col-12 col-lg-6 col-xl-8 book-table overflow-x-auto" style="height: 404px;">
+                    <table class="table table-bordered table-hover table-responsive table-striped">
                         <thead>
                             <tr>
                                 <th scope="col" class="table-dark table-active text-center">ID</th>
@@ -44,17 +44,12 @@
                                 <th scope="col" class="table-dark table-active text-center">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="dataBase-Book">
+                            <!-- ... -->
                             <tr>
-                                <th class="text-center">1</th>
-                                <th>Eloquent</th>
-                                <th>Marjin Haversine</th>
-                                <th>2022</th>
-                                <th>Scientific and educational</th>
-                                <th class="text-center">
-                                    <button class="btn btn-sm btn-success ms-1"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-sm btn-danger ms-1"><i class="fa fa-trash"></i></button>
-                                </th>
+                                <td class="message-dataBase text-center">
+                                    No book has been added
+                                </td>
                             </tr>
                         </tbody>
                     </table>
