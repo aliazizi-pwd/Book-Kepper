@@ -24,34 +24,53 @@ const filterElm = $.querySelector(".filter");
 
 
 
+// Create array list data book or dataBase book :)
+let bookList = [];
 
-// function check input element handling
+
+// function check input element handling :)
 function checkInputHandler (e) {
-    e.preventDefault();
-    if (innerID.value === "" || innerTitle.value === "" || innerAuthor.value === "" || innerYear.value === "" || innerGenre.value === "") {
-        Swal.fire({
-            title: "Warning User!", 
-            text: "You must complete the form",
-            icon: "error",
-        });
+    let idValue , titleValue , authorValue , yearValue , genreValue;
+    idValue = innerID.value.trim();
+    titleValue = innerTitle.value.trim();
+    authorValue = innerAuthor.value.trim();
+    yearValue = innerYear.value.trim();
+    genreValue = innerGenre.value.trim();
+
+    if (idValue === "" || titleValue === "" || authorValue === "" || yearValue === "" || genreValue === "") {
+        swal.fire({
+            title : "Error User",
+            text : "You must complete the form",
+            icon : "error",
+        })
     } else {
-        Swal.fire({
-          position: "bottom-end",
-          icon: "success",
-          title: "successfully",
-          text: "The book has been successfully added",
-          showConfirmButton: false,
-          timer: 2500,
-        });
+        // Create Object data book :)
+        const newDataBook = {
+            id : idValue,
+            title : titleValue,
+            author : authorValue,
+            year : yearValue,
+            genre : genreValue,
+            complete : false,
+        };
+
+        // send or push data to array main data base book :)
+        bookList.push(newDataBook);
+        
+        // dave data book to local storage browser user :)
+        saveDataBookLocalStorage(bookList);
     }
 }
 
 
 
-
+// function save data book to local storage :)
+function saveDataBookLocalStorage (bookList) {
+    localStorage.setItem("Books" , JSON.stringify(bookList));
+}
 
 
 
 //? add event listener
-// -> button add new a book to dataBase or list of books
+// -> button add new a book to dataBase or list of books :)
 btnAdd.addEventListener("click",checkInputHandler);
