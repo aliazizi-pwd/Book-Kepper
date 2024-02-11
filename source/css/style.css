@@ -14,6 +14,9 @@ body {
     background-color: var(--theme-Background);
     color: var(--theme-Color);
 }
+.container > span,h2 {
+    color: var(--theme-Color);
+}
 .swal2-popup {
     width: 400px;
     padding: 10px;
