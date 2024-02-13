@@ -97,6 +97,8 @@ function checkInputHandler () {
         dataBase.push(newDataBook);
         // --> Save data a new book to local storage Browser User 
         saveDataBaseLocalStorage(dataBase);
+        // --> Status update the application 
+        statusBookKeeper(dataBase);
         // --> Create a new book and append to list of books
         createNewBookHandler(dataBase);
     }
@@ -114,9 +116,7 @@ function createNewBookHandler (dataBase) {
     let boxMain,idElm,titleElm,authorElm,yearElm,genreElm,actionElm;
     let btnComplete,btnRemove,btnLiked;
 
-    
-    
-    
+    // --> loop for dataBase Array and Create a new book by items Array
     dataBase.forEach(function (items) {
         // --> start create a new book
         boxMain = $.createElement("tr");
@@ -162,6 +162,18 @@ function createNewBookHandler (dataBase) {
     });
 }
 
+
+// function for updating the status of the application
+function statusBookKeeper (database) {
+    if (dataBase.length > 0) {
+        messageDataBase.remove();
+    } else {
+        messageDataBase.innerHTML = `No book has been added`;
+    }
+    
+    // --> update count list books 
+    countBook.innerHTML = dataBase.length;
+}
 
 
 
