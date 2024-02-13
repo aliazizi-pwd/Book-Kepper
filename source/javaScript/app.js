@@ -91,6 +91,7 @@ function checkInputHandler () {
             yearBook : year,
             genreBook : genre,
             complete : false,
+            remove : false,
         };
         
         // --> Push and send data a new a book to database
@@ -122,7 +123,7 @@ function createNewBookHandler (dataBase) {
     dataBase.forEach(function (items) {
         // --> start create a new book
         boxMain = $.createElement("tr");
-        boxMain.classList = "table-striped table-hover";
+        boxMain.classList = "table-striped table-hover box-main";
         
         idElm = $.createElement("td");
         idElm.className = "text-center table-dark";
@@ -164,7 +165,6 @@ function createNewBookHandler (dataBase) {
         }
 
 
-
         // --> append to list of books
         actionElm.append(btnComplete,btnRemove,btnLiked);
         boxMain.append(idElm,titleElm,authorElm,yearElm,genreElm,actionElm);
@@ -201,6 +201,12 @@ function changeStatusBookHandler (e) {
             if (getId === items.idBook) {
                 items.complete = !items.complete;
             }
+        } else if (clicked.classList.contains("btn-remove")) {
+            let findIndex = dataBase.findIndex(function (find) {
+                return find.idBook === getId;
+            });
+            // --> Question Remove a book selected user :)
+            swalQuestionRemoved(findIndex);
         }
     });
 
@@ -209,6 +215,37 @@ function changeStatusBookHandler (e) {
     // --> send new data book for create and update :)
     createNewBookHandler(dataBase);
 }
+
+
+function swalQuestionRemoved (findIndex) {
+    Swal.fire({
+        title: "Delete the book!",
+        text: "Do you want to delete the book?",
+        icon: "question",
+        iconColor : "red",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: "Deleted!",
+            text: "The selected book has been successfully deleted",
+            icon: "success",
+            iconColor : "green"
+        });
+            dataBase.splice(findIndex , 1);
+            // --> save new data book :) 
+            saveDataBaseLocalStorage(dataBase);
+            // --> send new data book for create and update :)
+            createNewBookHandler(dataBase);
+        }
+    });
+}
+
+
+
 
 
 // function change theme app
