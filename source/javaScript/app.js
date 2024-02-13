@@ -10,7 +10,7 @@ const innerAuthor = $.querySelector(".input-author");
 const innerYear = $.querySelector(".input-year");
 const innerGenre = $.querySelector(".input-genre");
 // --> buttons elements clicked selected :)
-const btnAdd = $.querySelector(".btnAdd");
+const btnAdd = $.querySelector(".btn-add");
 const btnClear = $.querySelector(".btn-clear");
 const btnChangeTheme = $.querySelector(".btn-changeTheme");
 // --> select elements change selected :)
@@ -19,6 +19,72 @@ const filterElm = $.querySelector(".filter");
 const countBook = $.querySelector(".count-book");
 const messageDataBase = $.querySelector(".message-dataBase");
 const dataBaseView = $.querySelector(".dataBase-Book");
+
+
+// function check input's application :)
+function checkInputHandler () {
+    let id , title , author , year , genre;
+    
+    id = innerID.value.trim();
+    title = innerTitle.value.trim();
+    author = innerAuthor.value.trim();
+    year = innerYear.value.trim();
+    genre = innerGenre.value.trim();
+    
+    if (id === "" || title === "" || author === "" || year === "" || genre === "") {
+        Swal.fire({
+            title: "Warning User",
+            text : "Please fill out the book information form completely!",
+            icon : "warning",
+            iconColor : "darkorange",
+            showClass : {
+                popup : `
+                animate__animated
+                animate__fadeInUp
+                animate__faster`,
+            },
+            hideClass: {
+                popup : `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster`
+            }
+        })
+    } else {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "bottom-end",
+            showConfirmButton: false,
+            iconColor : "green",
+            color:"Black",
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            },
+            showClass : {
+                popup : `animate__animated
+                animate__fadeInUp
+                animate__faster`
+            },
+            hideClass : {
+                popup : `animate__animated
+                animate__fadeOutDown
+                animate__faster`
+            }
+        });
+        Toast.fire({
+            icon: "success",
+            title: "The book has been successfully added!"
+        });
+    }
+
+}
+
+
+
+
 
 
 // function change theme app
@@ -61,5 +127,6 @@ function loadAppHandler () {
 
 // add event listener for element
 btnChangeTheme.addEventListener("click",changeThemeHandler);
+btnAdd.addEventListener("click",checkInputHandler);
 // document add event listener for element body or document
 window.addEventListener("load",loadAppHandler);

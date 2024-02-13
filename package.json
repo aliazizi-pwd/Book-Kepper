@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "animate.css": "^4.1.1",
     "animejs": "^3.2.2",
     "bootstrap": "^5.3.2",
     "sweetalert2": "^11.10.5"

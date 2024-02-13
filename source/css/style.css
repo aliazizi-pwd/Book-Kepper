@@ -20,5 +20,9 @@ body {
 .swal2-popup {
     width: 400px;
     padding: 10px;
-    font-size: 12px;
+    font-size: 13px;
+    box-shadow: 19px -13px 33px -5px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+.swal2-icon {
+    font-size: 10px;
 }
