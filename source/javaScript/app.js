@@ -142,7 +142,7 @@ function createNewBookHandler (dataBase) {
 
         btnComplete = $.createElement("button");
         btnComplete.innerHTML = `<i class='fa fa-check'></i>`;
-        btnComplete.className = "btn btn-sm btn-check btn-success ms-1";
+        btnComplete.className = "btn btn-sm btn-complete btn-success ms-1";
 
         btnRemove = $.createElement("button");
         btnRemove.innerHTML = `<i class='fa fa-trash'></i>`;
@@ -150,11 +150,15 @@ function createNewBookHandler (dataBase) {
 
 
         btnLiked = $.createElement("button");
-        btnLiked.innerHTML = `<i class='fa fa-like'></i>`;
+        btnLiked.innerHTML = `<i class='fa fa-star'></i>`;
         btnLiked.className = "btn btn-sm btn-like btn-warning ms-1";
 
 
-        
+        // --> append to list of books
+        actionElm.append(btnComplete,btnRemove,btnLiked);
+        boxMain.append(idElm,titleElm,authorElm,yearElm,genreElm,actionElm);
+        // --> append main
+        dataBaseView.appendChild(boxMain);
     });
 }
 
