@@ -157,15 +157,20 @@ function createNewBookHandler (dataBase) {
         btnLiked.className = "btn btn-sm btn-like btn-warning ms-1";
 
 
+        //! --> Check status a new item book by clicking on the user :)
+        if (items.complete) {
+            boxMain.className = "table-success";
+            boxMain.classList.add("animate__animated" , "animate__fadeInDown");
+        }
+
+
+
         // --> append to list of books
         actionElm.append(btnComplete,btnRemove,btnLiked);
         boxMain.append(idElm,titleElm,authorElm,yearElm,genreElm,actionElm);
         // --> append main
         dataBaseView.appendChild(boxMain);
-        
-        // --> add animation for box main element to added
     });
-    boxMain.classList.add("animate__animated", "animate__fadeInDown");
 }
 
 
@@ -181,6 +186,29 @@ function statusBookKeeper (database) {
     countBook.innerHTML = dataBase.length;
 }
 
+
+// change status a book added to the list of books
+function changeStatusBookHandler (e) {
+    let clicked = e.target;
+    let getDataBaseBook = JSON.parse(localStorage.getItem("listBook"));
+    // --> get id clicked :)
+    let getId = clicked.parentElement.parentElement.firstChild.innerHTML;
+    dataBase = getDataBaseBook;
+
+    // --> loop for dataBase and find the book clicked and update the status book ::)
+    dataBase.forEach(function (items) {
+        if (clicked.classList.contains("btn-complete")) {
+            if (getId === items.idBook) {
+                items.complete = !items.complete;
+            }
+        }
+    });
+
+    // --> save new data book :) 
+    saveDataBaseLocalStorage(dataBase);
+    // --> send new data book for create and update :)
+    createNewBookHandler(dataBase);
+}
 
 
 // function change theme app
@@ -236,5 +264,6 @@ function loadAppHandler () {
 // add event listener for element
 btnChangeTheme.addEventListener("click",changeThemeHandler);
 btnAdd.addEventListener("click",checkInputHandler);
+dataBaseView.addEventListener("click",changeStatusBookHandler);
 // document add event listener for element body or document
 window.addEventListener("load",loadAppHandler);
