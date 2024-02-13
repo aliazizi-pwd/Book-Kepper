@@ -111,7 +111,51 @@ function saveDataBaseLocalStorage (dataBase) {
 
 // function create a new book and append to list of book
 function createNewBookHandler (dataBase) {
+    let boxMain,idElm,titleElm,authorElm,yearElm,genreElm,actionElm;
+    let btnComplete,btnRemove,btnLiked;
+
     
+    
+    
+    dataBase.forEach(function (items) {
+        // --> start create a new book
+        boxMain = $.createElement("tr");
+        
+        idElm = $.createElement("td");
+        idElm.className = "text-center";
+        idElm.innerHTML = items.idBook;
+        
+        titleElm = $.createElement("td");
+        titleElm.innerHTML = items.titleBook;
+        
+        authorElm = $.createElement("td");
+        authorElm.innerHTML = items.authorBook;
+
+        yearElm = $.createElement("td");
+        yearElm.innerHTML = items.yearBook;
+
+        genreElm = $.createElement("td");
+        genreElm.innerHTML = items.genreBook;
+
+        actionElm = $.createElement("td");
+        actionElm.className = "d-flex justify-content-center align-items-center";
+
+        btnComplete = $.createElement("button");
+        btnComplete.innerHTML = `<i class='fa fa-check'></i>`;
+        btnComplete.className = "btn btn-sm btn-check btn-success ms-1";
+
+        btnRemove = $.createElement("button");
+        btnRemove.innerHTML = `<i class='fa fa-trash'></i>`;
+        btnRemove.className = "btn btn-sm btn-remove btn-danger ms-1";
+
+
+        btnLiked = $.createElement("button");
+        btnLiked.innerHTML = `<i class='fa fa-like'></i>`;
+        btnLiked.className = "btn btn-sm btn-like btn-warning ms-1";
+
+
+        
+    });
 }
 
 
