@@ -95,11 +95,16 @@ function checkInputHandler () {
         
         // --> push and send data a new a book to database
         dataBase.push(newDataBook);
-        console.log(dataBase);
+        // --> save data a new book to local storage Browser User 
+        saveDataBaseLocalStorage(dataBase);
     }
 }
 
 
+// save data to local storage Browser User
+function saveDataBaseLocalStorage (dataBase) {
+    localStorage.setItem("listBook" , JSON.stringify(dataBase));
+}
 
 
 
