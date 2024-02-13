@@ -83,8 +83,20 @@ function checkInputHandler () {
             icon: "success",
             title: "The book has been successfully added!"
         });
+        // --> create data a new book
+        const newDataBook = {
+            idBook : id,
+            titleBook : title,
+            authorBook : author,
+            yearBook : year,
+            genreBook : genre,
+            complete : false,
+        };
+        
+        // --> push and send data a new a book to database
+        dataBase.push(newDataBook);
+        console.log(dataBase);
     }
-
 }
 
 
