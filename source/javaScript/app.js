@@ -21,6 +21,11 @@ const messageDataBase = $.querySelector(".message-dataBase");
 const dataBaseView = $.querySelector(".dataBase-Book");
 
 
+
+// Create the array Book data or DataBase Book Keeper
+let dataBase = [];
+
+
 // function check input's application :)
 function checkInputHandler () {
     let id , title , author , year , genre;
