@@ -162,8 +162,10 @@ function createNewBookHandler (dataBase) {
         boxMain.append(idElm,titleElm,authorElm,yearElm,genreElm,actionElm);
         // --> append main
         dataBaseView.appendChild(boxMain);
+        
+        // --> add animation for box main element to added
     });
-    boxMain.classList.add("animate__animated", 'animate__fadeIn');
+    boxMain.classList.add("animate__animated", "animate__fadeInDown");
 }
 
 
@@ -228,7 +230,6 @@ function loadAppHandler () {
         saveDataBaseLocalStorage(dataBase);
         statusBookKeeper(dataBase);
     }
-
 }
 
 
