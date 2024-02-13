@@ -93,10 +93,12 @@ function checkInputHandler () {
             complete : false,
         };
         
-        // --> push and send data a new a book to database
+        // --> Push and send data a new a book to database
         dataBase.push(newDataBook);
-        // --> save data a new book to local storage Browser User 
+        // --> Save data a new book to local storage Browser User 
         saveDataBaseLocalStorage(dataBase);
+        // --> Create a new book and append to list of books
+        createNewBookHandler(dataBase);
     }
 }
 
@@ -104,6 +106,12 @@ function checkInputHandler () {
 // save data to local storage Browser User
 function saveDataBaseLocalStorage (dataBase) {
     localStorage.setItem("listBook" , JSON.stringify(dataBase));
+}
+
+
+// function create a new book and append to list of book
+function createNewBookHandler (dataBase) {
+    
 }
 
 
