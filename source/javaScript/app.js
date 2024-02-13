@@ -27,12 +27,12 @@ function changeThemeHandler (e) {
         darkModeThemeHandler();
         themeApp = "dark";
         localStorage.setItem("theme",themeApp);
-        e.target.innerHTML = `<i class="fa fa-sun"></i>`;
+        btnChangeTheme.innerHTML = `<i class='fa fa-sun'></i>`;
     } else {
         lightModeThemeHandler();
         themeApp = "light";
         localStorage.setItem("theme",themeApp);
-        e.target.innerHTML = `<i class="fa fa-moon"></i>`;
+        btnChangeTheme.innerHTML = `<i class='fa fa-moon'></i>`;
     }
 }   
 
@@ -54,7 +54,7 @@ function loadAppHandler () {
     // --> The theme will be dark when the page is loaded
     let getTheme = localStorage.getItem("theme");
     if (getTheme === "dark") {
-        darkModeThemeHandler();
+        changeThemeHandler();
     }
 }
 
