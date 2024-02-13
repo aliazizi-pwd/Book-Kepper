@@ -122,9 +122,10 @@ function createNewBookHandler (dataBase) {
     dataBase.forEach(function (items) {
         // --> start create a new book
         boxMain = $.createElement("tr");
+        boxMain.classList = "table-striped table-hover";
         
         idElm = $.createElement("td");
-        idElm.className = "text-center";
+        idElm.className = "text-center table-dark";
         idElm.innerHTML = items.idBook;
         
         titleElm = $.createElement("td");
@@ -140,7 +141,7 @@ function createNewBookHandler (dataBase) {
         genreElm.innerHTML = items.genreBook;
 
         actionElm = $.createElement("td");
-        actionElm.className = "d-flex justify-content-center align-items-center";
+        actionElm.className = "d-flex justify-content-center align-items-center table-active";
 
         btnComplete = $.createElement("button");
         btnComplete.innerHTML = `<i class='fa fa-check'></i>`;
@@ -162,6 +163,7 @@ function createNewBookHandler (dataBase) {
         // --> append main
         dataBaseView.appendChild(boxMain);
     });
+    boxMain.classList.add("animate__animated", 'animate__fadeIn');
 }
 
 
