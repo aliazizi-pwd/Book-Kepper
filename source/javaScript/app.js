@@ -116,6 +116,8 @@ function createNewBookHandler (dataBase) {
     let boxMain,idElm,titleElm,authorElm,yearElm,genreElm,actionElm;
     let btnComplete,btnRemove,btnLiked;
 
+    dataBaseView.innerHTML = "";
+
     // --> loop for dataBase Array and Create a new book by items Array
     dataBase.forEach(function (items) {
         // --> start create a new book
@@ -212,6 +214,19 @@ function loadAppHandler () {
     if (getTheme === "dark") {
         changeThemeHandler();
     }
+
+    // --> Load app for part view dataBase Books
+    let getDataBaseBook = JSON.parse(localStorage.getItem("listBook"));
+    dataBase = getDataBaseBook;
+
+    if (dataBase === null) {
+        dataBase = [];
+    } else {
+        createNewBookHandler(dataBase);
+        saveDataBaseLocalStorage(dataBase);
+        statusBookKeeper(dataBase);
+    }
+
 }
 
 
