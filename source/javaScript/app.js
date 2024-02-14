@@ -103,6 +103,9 @@ function checkInputHandler () {
         // --> Create a new book and append to list of books
         createNewBookHandler(dataBase);
 
+        // empty input elements app
+        emptyInputHandler();
+
         // focus input element set id book :)
         innerID.focus();
     }
@@ -118,7 +121,7 @@ function saveDataBaseLocalStorage (dataBase) {
 // function create a new book and append to list of book
 function createNewBookHandler (dataBase) {
     let boxMain,idElm,titleElm,authorElm,yearElm,genreElm,actionElm;
-    let btnComplete,btnRemove,btnLiked;
+    let btnComplete,btnRemove;
 
     dataBaseView.innerHTML = "";
 
@@ -156,11 +159,6 @@ function createNewBookHandler (dataBase) {
         btnRemove.className = "btn btn-sm btn-remove btn-danger ms-1";
 
 
-        btnLiked = $.createElement("button");
-        btnLiked.innerHTML = `<i class='fa fa-star'></i>`;
-        btnLiked.className = "btn btn-sm btn-like btn-warning ms-1";
-
-
         //! --> Check status a new item book by clicking on the user :)
         if (items.complete) {
             boxMain.className = "table-success";
@@ -169,7 +167,7 @@ function createNewBookHandler (dataBase) {
 
 
         // --> append to list of books
-        actionElm.append(btnComplete,btnRemove,btnLiked);
+        actionElm.append(btnComplete,btnRemove);
         boxMain.append(idElm,titleElm,authorElm,yearElm,genreElm,actionElm);
         // --> append main
         dataBaseView.appendChild(boxMain);
@@ -304,6 +302,16 @@ function filterBooksHandler (e) {
     createNewBookHandler(filterBooks);
 }
 
+
+
+// Empty input
+function emptyInputHandler () {
+    innerID.value = "";
+    innerTitle.value = "";
+    innerAuthor.value = "";
+    innerYear.value = "";
+    innerGenre.value = "";    
+}  
 
 
 
