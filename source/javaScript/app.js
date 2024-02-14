@@ -173,6 +173,7 @@ function createNewBookHandler (dataBase) {
         boxMain.append(idElm,titleElm,authorElm,yearElm,genreElm,actionElm);
         // --> append main
         dataBaseView.appendChild(boxMain);
+        boxMain.classList.add("animate__animated" , "animate__fadeInDown");
     });
 }
 
@@ -283,6 +284,30 @@ function clearInputAndBooksHandler () {
 
 
 
+// function filter of book 
+function filterBooksHandler (e) {
+    const targetValue = e.target.value;
+    const getDataBaseBook = JSON.parse(localStorage.getItem("listBook"));
+    dataBase = getDataBaseBook;
+
+    let filterBooks;
+    if (targetValue === "All") {
+        filterBooks = dataBase;
+    } else if (targetValue === "Complete") {
+        filterBooks = dataBase.filter(function (book) {return book.complete === true});
+    } else if (targetValue === "unComplete") {
+        filterBooks = dataBase.filter(function (book) {return book.complete != true});
+    }
+
+
+    // update app
+    createNewBookHandler(filterBooks);
+}
+
+
+
+
+
 
 // function change theme app
 function changeThemeHandler (e) {
@@ -301,14 +326,14 @@ function changeThemeHandler (e) {
 
 // function dark mode theme handler
 function darkModeThemeHandler () {
-    document.documentElement.style.setProperty("--theme-Background","#000");
+    document.documentElement.style.setProperty("--theme-Background","#092635");
     document.documentElement.style.setProperty("--theme-Color","#fff");
 }
 
 // function dark mode theme handler
 function lightModeThemeHandler () {
     document.documentElement.style.setProperty("--theme-Background","#fff");
-    document.documentElement.style.setProperty("--theme-Color","#000");
+    document.documentElement.style.setProperty("--theme-Color","#092635");
 }
 
 // function load application handler
@@ -342,3 +367,5 @@ dataBaseView.addEventListener("click",changeStatusBookHandler);
 document.addEventListener("keyup",checkInputByKeyboard);
 // document add event listener for element body or document
 window.addEventListener("load",loadAppHandler);
+// change element status application 
+filterElm.addEventListener("change",filterBooksHandler);
