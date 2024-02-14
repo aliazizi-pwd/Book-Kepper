@@ -102,6 +102,9 @@ function checkInputHandler () {
         statusBookKeeper(dataBase);
         // --> Create a new book and append to list of books
         createNewBookHandler(dataBase);
+
+        // focus input element set id book :)
+        innerID.focus();
     }
 }
 
@@ -217,6 +220,7 @@ function changeStatusBookHandler (e) {
 }
 
 
+// function swal Question Remove a book selected user
 function swalQuestionRemoved (findIndex) {
     Swal.fire({
         title: "Delete the book!",
@@ -242,6 +246,15 @@ function swalQuestionRemoved (findIndex) {
             createNewBookHandler(dataBase);
         }
     });
+}
+
+
+// function check input app by keyboard 
+function checkInputByKeyboard (e) {
+    if (e.key === "Enter") {
+        // check input :)
+        checkInputHandler()
+    }
 }
 
 
@@ -302,5 +315,6 @@ function loadAppHandler () {
 btnChangeTheme.addEventListener("click",changeThemeHandler);
 btnAdd.addEventListener("click",checkInputHandler);
 dataBaseView.addEventListener("click",changeStatusBookHandler);
+document.addEventListener("keyup",checkInputByKeyboard);
 // document add event listener for element body or document
 window.addEventListener("load",loadAppHandler);
