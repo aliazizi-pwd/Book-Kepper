@@ -354,14 +354,11 @@ function loadAppHandler () {
     }
 
     // --> Load app for part view dataBase Books
-    let getDataBaseBook = JSON.parse(localStorage.getItem("listBook"));
-    dataBase = getDataBaseBook;
+    let getDataBaseBook = localStorage.getItem("listBook")
 
-    if (dataBase === null) {
-        dataBase = [];
-    } else {
+    if (getDataBaseBook) {
+        dataBase = JSON.parse(localStorage.getItem("listBook"));
         createNewBookHandler(dataBase);
-        saveDataBaseLocalStorage(dataBase);
         statusBookKeeper(dataBase);
     }
 }
