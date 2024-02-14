@@ -258,6 +258,29 @@ function checkInputByKeyboard (e) {
 }
 
 
+// function clear all input values and list of book and clear local storage :)
+function clearInputAndBooksHandler () {
+    // --> Clear input values :-
+    innerID.value = "";    
+    innerTitle.value = "";
+    innerAuthor.value = "";
+    innerYear.value = "";
+    innerGenre.value = "";
+
+    // --> focus for input id 
+    innerID.focus();
+
+    // --> clear all book and clear local storage
+    dataBaseView.innerHTML = "";
+    dataBase = [];
+    // --> clear remove items just (key listBook) of all books
+    localStorage.removeItem("listBook");
+
+    // --> update status application :)
+    saveDataBaseLocalStorage(dataBase);
+    createNewBookHandler(dataBase);
+}
+
 
 
 
@@ -314,6 +337,7 @@ function loadAppHandler () {
 // add event listener for element
 btnChangeTheme.addEventListener("click",changeThemeHandler);
 btnAdd.addEventListener("click",checkInputHandler);
+btnClear.addEventListener("click",clearInputAndBooksHandler)
 dataBaseView.addEventListener("click",changeStatusBookHandler);
 document.addEventListener("keyup",checkInputByKeyboard);
 // document add event listener for element body or document
